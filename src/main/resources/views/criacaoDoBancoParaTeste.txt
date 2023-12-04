@@ -1,0 +1,37 @@
+migrate
+
+CREATE TABLE produto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(250),
+	quantidade NUMERIC(7,2)
+    valor NUMERIC(7,2)
+);
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255)
+);
+
+-- Tabela para vendedores
+CREATE TABLE vendedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255)
+);
+
+------------------------------------------
+
+INSERT INTO produto (descricao, quantidade, valor) 
+VALUES 
+    ('Produto A', 10.5, 25.99),
+    ('Produto B', 20.75, 19.95),
+    ('Produto C', 15.0, 30.50);
+	
+	-- Inserir dados na tabela de clientes
+INSERT INTO clientes (nome) VALUES ('Cliente A');
+INSERT INTO clientes (nome) VALUES ('Cliente B');
+INSERT INTO clientes (nome) VALUES ('Cliente C');
+
+-- Inserir dados na tabela de vendedores
+INSERT INTO vendedores (nome) VALUES ('Vendedor X');
+INSERT INTO vendedores (nome) VALUES ('Vendedor Y');
+INSERT INTO vendedores (nome) VALUES ('Vendedor Z');
