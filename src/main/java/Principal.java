@@ -13,8 +13,10 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        try {
 
+
+
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("/views/Pdv.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

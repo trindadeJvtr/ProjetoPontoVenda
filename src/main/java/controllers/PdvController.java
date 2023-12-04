@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.ModelItemVenda;
@@ -92,6 +94,34 @@ public class PdvController implements Initializable {
         tb_item.setFocusTraversable(false);
         carregarImagem();
         tf_quantidade.requestFocus();
+
+        tf_produto.setOnKeyPressed(this::chamaTelaProduto);
+
+    }
+
+    private void chamaTelaProduto(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.F2) {
+            handleSelecionaProduto();
+        }
+    }
+
+    private void handleSelecionaProduto() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ListaProdutos.fxml"));
+            Stage cadastro = new Stage();
+            cadastro.setScene(new Scene(loader.load()));
+            cadastro.setTitle("Lista Produtos");
+
+            ListaProdutoController listaProdutoController = loader.getController();
+            int codigo = listaProdutoController.showAndWaitRetorno(cadastro);
+
+            tf_produto.setText(String.valueOf(codigo));
+
+            buscaProduto();
+
+        } catch (IOException ex) {
+            Mensagem.erro("Erro: ", ex);
+        }
     }
 
     private void carregarImagem() {
